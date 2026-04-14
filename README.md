@@ -2,6 +2,8 @@
 
 > **A real-time crowd intelligence dashboard for large venues — built with React, Firebase, and Recharts.**
 
+🔥 **Live Demo:** [https://smartcrowd-ai.netlify.app/](https://smartcrowd-ai.netlify.app/)
+
 Smart Crowd AI gives event operators a live command centre to monitor crowd density, manage queues, broadcast alerts, and simulate high-density scenarios — all from a premium, mobile-first interface.
 
 ---

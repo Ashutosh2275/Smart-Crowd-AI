@@ -1,0 +1,341 @@
+/* ══════════════════════════════════════════════════════════════
+   Smart Crowd AI — Global Animation Library v2
+   All keyframes + reusable utility classes.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 1. KEYFRAME DEFINITIONS ─────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes slideInModal {
+  from { opacity: 0; transform: translateY(36px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)     scale(1);   }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.90); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+/* ── Glow / pulse ─────────────────────────────────────────────── */
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 6px rgba(99,102,241,0.4); }
+  50%       { box-shadow: 0 0 22px rgba(99,102,241,1.0), 0 0 40px rgba(99,102,241,0.4); }
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1;   transform: scale(1);    }
+  50%       { opacity: 0.6; transform: scale(1.25); }
+}
+
+@keyframes criticalPulse {
+  0%, 100% { opacity: 1;   box-shadow: 0 0 8px rgba(239,68,68,0.8); }
+  50%       { opacity: 0.7; box-shadow: 0 0 20px rgba(239,68,68,1.0), 0 0 40px rgba(239,68,68,0.5); }
+}
+
+@keyframes ringPulse {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  100% { transform: scale(2.4);  opacity: 0;   }
+}
+
+/* ── Spin / rotate ────────────────────────────────────────────── */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  to { transform: rotate(-360deg); }
+}
+
+/* ── Background / gradient animations ────────────────────────── */
+
+@keyframes meshGradient {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0%   0%;   }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 0%   0%;   }
+}
+
+/* ── Data border sweep ────────────────────────────────────────── */
+
+@keyframes dataBorder {
+  0%   { left: -100%; }
+  100% { left:  200%; }
+}
+
+/* ── Shimmer for skeletons ────────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -800px 0; }
+  100% { background-position:  800px 0; }
+}
+
+/* ── Scanline vertical sweep ──────────────────────────────────── */
+
+@keyframes scanline {
+  0%   { top: -5%; }
+  100% { top: 105%; }
+}
+
+/* ── Float / levitate ─────────────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ── Orb drift ────────────────────────────────────────────────── */
+
+@keyframes orbDrift {
+  0%   { transform: translate(0,   0)   scale(1); }
+  33%  { transform: translate(30px, -20px) scale(1.05); }
+  66%  { transform: translate(-20px, 20px) scale(0.97); }
+  100% { transform: translate(0,   0)   scale(1); }
+}
+
+/* ── Number count-up flash ────────────────────────────────────── */
+
+@keyframes countFlash {
+  0%   { opacity: 0.4; transform: scale(0.96); }
+  50%  { opacity: 1;   transform: scale(1.04); }
+  100% { opacity: 1;   transform: scale(1);    }
+}
+
+/* ── Glitch text effect ───────────────────────────────────────── */
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20%       { transform: translate(-2px, 1px); }
+  40%       { transform: translate(2px, -1px); }
+  60%       { transform: translate(-1px, 2px); }
+  80%       { transform: translate(1px, -2px); }
+}
+
+/* ── Data stream particles ────────────────────────────────────── */
+
+@keyframes dataStream {
+  0%   { opacity: 0; transform: translateY(-20px); }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(100vh); }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   2. PAGE / ROUTE TRANSITIONS
+   ══════════════════════════════════════════════════════════════ */
+
+.page-enter {
+  animation: fadeInScale 0.50s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.page-exit {
+  animation: fadeIn 0.15s ease-out reverse both;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   3. MODAL / DROPDOWN / OVERLAY ENTRANCES
+   ══════════════════════════════════════════════════════════════ */
+
+.modal-enter {
+  animation: slideInModal 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dropdown-enter {
+  animation: scaleIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: top right;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   4. CARD MICRO-INTERACTIONS
+   ══════════════════════════════════════════════════════════════ */
+
+.card-interactive {
+  transition:
+    transform   0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow  0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.22s ease;
+  will-change: transform;
+}
+
+.card-interactive:hover {
+  transform: translateY(-5px) scale(1.012);
+  box-shadow:
+    0 24px 50px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(99,102,241,0.18),
+    0 0 30px -10px rgba(99,102,241,0.20);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   5. STAGGER LIST CHILDREN
+   ══════════════════════════════════════════════════════════════ */
+
+.stagger-list > * {
+  animation: fadeInUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  opacity: 0;
+}
+
+.stagger-list > *:nth-child(1)  { animation-delay: 0.04s; }
+.stagger-list > *:nth-child(2)  { animation-delay: 0.09s; }
+.stagger-list > *:nth-child(3)  { animation-delay: 0.14s; }
+.stagger-list > *:nth-child(4)  { animation-delay: 0.19s; }
+.stagger-list > *:nth-child(5)  { animation-delay: 0.24s; }
+.stagger-list > *:nth-child(6)  { animation-delay: 0.29s; }
+.stagger-list > *:nth-child(7)  { animation-delay: 0.34s; }
+.stagger-list > *:nth-child(8)  { animation-delay: 0.39s; }
+.stagger-list > *:nth-child(9)  { animation-delay: 0.44s; }
+.stagger-list > *:nth-child(10) { animation-delay: 0.49s; }
+.stagger-list > *:nth-child(11) { animation-delay: 0.54s; }
+.stagger-list > *:nth-child(12) { animation-delay: 0.59s; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   6. DIRECTIONAL SLIDE HELPERS
+   ══════════════════════════════════════════════════════════════ */
+
+.anim-slide-left  { animation: slideInLeft  0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-slide-right { animation: slideInRight 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in     { animation: fadeIn       0.40s ease both; }
+.anim-fade-in-up  { animation: fadeInUp     0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-scale-in    { animation: scaleIn      0.32s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   7. GLOW / PULSE UTILITIES
+   ══════════════════════════════════════════════════════════════ */
+
+.glow-pulse {
+  animation: glowPulse 2.8s ease-in-out infinite;
+}
+
+.live-pulse {
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+.critical-pulse {
+  animation: criticalPulse 0.9s ease-in-out infinite;
+}
+
+.float-anim {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-anim-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+/* Ring expand (for live indicators) */
+.ring-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: ringPulse 1.8s ease-out infinite;
+  opacity: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. SKELETON SHIMMER
+   ══════════════════════════════════════════════════════════════ */
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03)  0%,
+    rgba(255,255,255,0.09) 40%,
+    rgba(255,255,255,0.03) 80%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.7s linear infinite;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   9. SCANLINE OVERLAY
+   ══════════════════════════════════════════════════════════════ */
+
+.scanline-sweep::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(99,102,241,0.04) 40%,
+    rgba(99,102,241,0.04) 60%,
+    transparent 100%
+  );
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   10. NUMBER COUNT-UP EFFECT
+   ══════════════════════════════════════════════════════════════ */
+
+.count-flash {
+  animation: countFlash 0.4s ease both;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   11. REDUCED MOTION SAFETY NET
+   ══════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:      0.01ms !important;
+  }
+}
